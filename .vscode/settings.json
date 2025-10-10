@@ -1,0 +1,9 @@
+{
+  // Enable quick filesystem autosave in the editor
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 1000,
+  // Keep unsaved changes across restarts
+  "files.hotExit": "onExitAndWindowClose",
+  // Reduce telemetry noise
+  "telemetry.enableTelemetry": false
+}
