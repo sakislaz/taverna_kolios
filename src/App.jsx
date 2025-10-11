@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next'
 export default function App() {
   const [deferredPrompt, setDeferredPrompt] = useState(null)
   const [isInstallVisible, setInstallVisible] = useState(false)
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
 
   useEffect(() => {
     function onBeforeInstallPrompt(e) {
@@ -41,9 +41,25 @@ export default function App() {
 
   return (
     <BrowserRouter>
-      <nav style={{ padding: 10 }}>
-        <Link to="/" style={{ marginRight: 10 }}>Home</Link>
-        <Link to="/order">Order</Link>
+      <nav style={{ padding: 10, display: 'flex', alignItems: 'center', gap: 12 }}>
+        <div style={{ flex: 1 }}>
+          <Link to="/" style={{ marginRight: 10 }}>Home</Link>
+          <Link to="/order">Order</Link>
+        </div>
+        <div>
+          <label htmlFor="lang-select" style={{ marginRight: 8, fontWeight: 600 }}>Lang</label>
+          <select
+            id="lang-select"
+            defaultValue={i18n?.language || 'en'}
+            onChange={(e) => i18n.changeLanguage(e.target.value)}
+            style={{ padding: '6px 8px', borderRadius: 6 }}
+          >
+            <option value="en">EN</option>
+            <option value="it">IT</option>
+            <option value="ro">RO</option>
+            <option value="de">DE</option>
+          </select>
+        </div>
       </nav>
 
       <Routes>
