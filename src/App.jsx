@@ -2,10 +2,12 @@ import React, { useEffect, useState } from 'react'
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 import Home from './pages/Home'
 import Order from './pages/Order'
+import { useTranslation } from 'react-i18next'
 
 export default function App() {
   const [deferredPrompt, setDeferredPrompt] = useState(null)
   const [isInstallVisible, setInstallVisible] = useState(false)
+  const { t } = useTranslation()
 
   useEffect(() => {
     function onBeforeInstallPrompt(e) {
@@ -64,7 +66,7 @@ export default function App() {
               cursor: 'pointer'
             }}
           >
-            Install Taverna Kolios — Add to Home Screen
+            {t('button.install')}
           </button>
         </div>
       )}
