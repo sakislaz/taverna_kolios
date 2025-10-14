@@ -10,15 +10,25 @@ export default function Home() {
       <h1 className="hub-title">{t('header.welcome')}</h1>
 
       <div className="hub-grid">
-        <Link to="/order" className="hub-box dark-blue">
+        <a
+          href="https://www.foodbooking.com/api/res/4_ggpn"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hub-box dark-blue"
+        >
           <span className="hub-emoji">📅</span>
           <span className="hub-text">{t('link.book_table')}</span>
-        </Link>
+        </a>
 
-        <Link to="/order" className="hub-box turquoise">
+        <a
+          href="https://www.foodbooking.com/api/fb/4_ggpn"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hub-box turquoise"
+        >
           <span className="hub-emoji">🏖️</span>
           <span className="hub-text">{t('link.order_beach')}</span>
-        </Link>
+        </a>
 
         <Link to="/services" className="hub-box orange">
           <span className="hub-emoji">🔥</span>
