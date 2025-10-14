@@ -15,20 +15,26 @@ export default function App() {
       e.preventDefault()
       // Save the event for later trigger
       setDeferredPrompt(e)
+      // Display our custom install button
       setInstallVisible(true)
     }
 
+    // Listen for the browser's install prompt event
     window.addEventListener('beforeinstallprompt', onBeforeInstallPrompt)
+    
+    // Cleanup the event listener when the component unmounts
     return () => window.removeEventListener('beforeinstallprompt', onBeforeInstallPrompt)
   }, [])
 
   async function handleInstallClick() {
     if (!deferredPrompt) return
     try {
+      // Show the native browser installation prompt
       deferredPrompt.prompt()
+      
       // Wait for the user's choice
       const { outcome } = await deferredPrompt.userChoice
-      // outcome is 'accepted' or 'dismissed'
+      
       console.log('A2HS choice:', outcome)
     } catch (err) {
       console.warn('Install prompt error', err)
@@ -41,11 +47,34 @@ export default function App() {
 
   return (
     <BrowserRouter>
+      {/* ΝΕΑ NAV BAR: Το Install Button έχει προτεραιότητα στη θέση του Home */}
       <nav style={{ padding: 10, display: 'flex', alignItems: 'center', gap: 12 }}>
+        
+        {/* Αριστερή Πλευρά: Install Button ή Home Link (ως backup) */}
         <div style={{ flex: 1 }}>
-          {/* Μόνο ο σύνδεσμος Home και όχι ο Order */}
-          <Link to="/" style={{ marginRight: 10 }}>Home</Link>
+            {isInstallVisible && deferredPrompt ? (
+                // 1. Το κουμπί INSTALL/A2HS (Κύρια προτροπή, εμφανίζεται μόνο αν το browser το επιτρέψει)
+                <button
+                    onClick={handleInstallClick}
+                    style={{
+                        background: '#e35f0f', 
+                        color: '#fff',
+                        border: 'none',
+                        padding: '8px 14px',
+                        borderRadius: 6,
+                        fontWeight: 700,
+                        cursor: 'pointer'
+                    }}
+                >
+                    Εγκατάσταση App
+                </button>
+            ) : (
+                // 2. Εάν το Install ΔΕΝ είναι διαθέσιμο (π.χ. σε iOS), εμφανίζεται μόνο το Home Link
+                <Link to="/" style={{ marginRight: 10 }}>Home</Link>
+            )}
         </div>
+        
+        {/* Δεξιά Πλευρά: Γλωσσική επιλογή */}
         <div>
           <label htmlFor="lang-select" style={{ marginRight: 8, fontWeight: 600 }}>Lang</label>
           <select
@@ -62,31 +91,14 @@ export default function App() {
         </div>
       </nav>
 
+      {/* Ρύθμιση Routing: Μόνο Home και Services */}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/services" element={<Services />} />
-        {/* Η Route για το /order αφαιρέθηκε */}
       </Routes>
 
-      {/* Install button for Add to Home Screen (visible when beforeinstallprompt fires) */}
-      {isInstallVisible && deferredPrompt && (
-        <div style={{ display: 'flex', justifyContent: 'center', padding: 12 }}>
-          <button
-            onClick={handleInstallClick}
-            style={{
-              background: '#0b74de',
-              color: '#fff',
-              border: 'none',
-              padding: '10px 16px',
-              borderRadius: 8,
-              fontWeight: 700,
-              cursor: 'pointer'
-            }}
-          >
-            {t('button.install')}
-          </button>
-        </div>
-      )}
+      {/* Η περιοχή του Install button στο κάτω μέρος έχει αφαιρεθεί */}
+      
     </BrowserRouter>
   )
 }
