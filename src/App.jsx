@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 import Home from './pages/Home'
-import Order from './pages/Order'
 import Services from './pages/Services'
 import { useTranslation } from 'react-i18next'
 
@@ -45,7 +44,6 @@ export default function App() {
       <nav style={{ padding: 10, display: 'flex', alignItems: 'center', gap: 12 }}>
         <div style={{ flex: 1 }}>
           <Link to="/" style={{ marginRight: 10 }}>Home</Link>
-          <Link to="/order">Order</Link>
         </div>
         <div>
           <label htmlFor="lang-select" style={{ marginRight: 8, fontWeight: 600 }}>Lang</label>
@@ -65,7 +63,6 @@ export default function App() {
 
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/order" element={<Order />} />
         <Route path="/services" element={<Services />} />
       </Routes>
 
