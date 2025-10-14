@@ -43,6 +43,7 @@ export default function App() {
     <BrowserRouter>
       <nav style={{ padding: 10, display: 'flex', alignItems: 'center', gap: 12 }}>
         <div style={{ flex: 1 }}>
+          {/* Μόνο ο σύνδεσμος Home και όχι ο Order */}
           <Link to="/" style={{ marginRight: 10 }}>Home</Link>
         </div>
         <div>
@@ -64,6 +65,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/services" element={<Services />} />
+        {/* Η Route για το /order αφαιρέθηκε */}
       </Routes>
 
       {/* Install button for Add to Home Screen (visible when beforeinstallprompt fires) */}
