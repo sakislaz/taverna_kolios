@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 import Home from './pages/Home'
 import Order from './pages/Order'
+import Services from './pages/Services'
 import { useTranslation } from 'react-i18next'
 
 export default function App() {
@@ -65,6 +66,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/order" element={<Order />} />
+        <Route path="/services" element={<Services />} />
       </Routes>
 
       {/* Install button for Add to Home Screen (visible when beforeinstallprompt fires) */}
