@@ -47,30 +47,32 @@ export default function App() {
 
   return (
     <BrowserRouter>
-      {/* ΝΕΑ NAV BAR: Το Install Button έχει προτεραιότητα στη θέση του Home */}
+      {/* ΔΙΟΡΘΩΜΕΝΟ NAV BAR: Home Link + Option Install Button */}
       <nav style={{ padding: 10, display: 'flex', alignItems: 'center', gap: 12 }}>
         
-        {/* Αριστερή Πλευρά: Install Button ή Home Link (ως backup) */}
-        <div style={{ flex: 1 }}>
-            {isInstallVisible && deferredPrompt ? (
-                // 1. Το κουμπί INSTALL/A2HS (Κύρια προτροπή, εμφανίζεται μόνο αν το browser το επιτρέψει)
+        {/* Αριστερή Πλευρά: Home Link (ΠΑΝΤΑ ΟΡΑΤΟ) */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12, flex: 1 }}>
+            
+            {/* 1. Σύνδεσμος Home (πάντα ορατός) */}
+            <Link to="/">Home</Link>
+            
+            {/* 2. Κουμπί Install (Ορατό μόνο αν το PWA είναι έτοιμο για προτροπή) */}
+            {isInstallVisible && deferredPrompt && (
                 <button
                     onClick={handleInstallClick}
                     style={{
                         background: '#e35f0f', 
                         color: '#fff',
                         border: 'none',
-                        padding: '8px 14px',
+                        padding: '6px 12px',
                         borderRadius: 6,
-                        fontWeight: 700,
-                        cursor: 'pointer'
+                        fontWeight: 600,
+                        cursor: 'pointer',
+                        fontSize: '14px' // Μικρότερο για να χωράει στη Navbar
                     }}
                 >
                     Εγκατάσταση App
                 </button>
-            ) : (
-                // 2. Εάν το Install ΔΕΝ είναι διαθέσιμο (π.χ. σε iOS), εμφανίζεται μόνο το Home Link
-                <Link to="/" style={{ marginRight: 10 }}>Home</Link>
             )}
         </div>
         
