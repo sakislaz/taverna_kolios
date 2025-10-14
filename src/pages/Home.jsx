@@ -11,7 +11,7 @@ export default function Home() {
 
       <div className="hub-grid">
         <a
-          href="https://www.foodbooking.com/api/res/4_ggpn"
+          href="https://www.foodbooking.com/api/res/4_qgpn"
           target="_blank"
           rel="noopener noreferrer"
           className="hub-box dark-blue"
@@ -21,7 +21,7 @@ export default function Home() {
         </a>
 
         <a
-          href="https://www.foodbooking.com/api/fb/4_ggpn"
+          href="https://www.foodbooking.com/api/fb/4_qgpn"
           target="_blank"
           rel="noopener noreferrer"
           className="hub-box turquoise"
