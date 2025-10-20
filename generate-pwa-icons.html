@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PWA Icon Generator - Taverna Kolios</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #e35f0f;
+            text-align: center;
+        }
+        .canvas-wrapper {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        .canvas-box {
+            text-align: center;
+        }
+        canvas {
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            display: block;
+            margin: 10px auto;
+        }
+        button {
+            background: #e35f0f;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            margin: 5px;
+        }
+        button:hover {
+            background: #c54f0a;
+        }
+        .instructions {
+            background: #fff8e1;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+            border-left: 4px solid #e35f0f;
+        }
+        .instructions h3 {
+            margin-top: 0;
+            color: #e35f0f;
+        }
+        .info {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🍴 Taverna Kolios - PWA Icon Generator</h1>
+        
+        <div class="info">
+            <strong>What this does:</strong> Generates the two PWA icons needed for your app:
+            <ul>
+                <li><strong>192x192</strong> - Used for home screen icons</li>
+                <li><strong>512x512</strong> - Used for splash screens</li>
+            </ul>
+        </div>
+
+        <div class="canvas-wrapper">
+            <div class="canvas-box">
+                <h3>192 × 192</h3>
+                <canvas id="canvas192" width="192" height="192"></canvas>
+                <button onclick="downloadImage('canvas192', 'pwa-192x192.png')">
+                    💾 Download 192×192
+                </button>
+            </div>
+            
+            <div class="canvas-box">
+                <h3>512 × 512</h3>
+                <canvas id="canvas512" width="512" height="512"></canvas>
+                <button onclick="downloadImage('canvas512', 'pwa-512x512.png')">
+                    💾 Download 512×512
+                </button>
+            </div>
+        </div>
+
+        <div class="instructions">
+            <h3>📝 Instructions:</h3>
+            <ol>
+                <li><strong>Click each "Download" button</strong> to save both images</li>
+                <li><strong>Move both PNG files</strong> to the <code>public/</code> folder in your project</li>
+                <li><strong>File names must be exact:</strong>
+                    <ul>
+                        <li><code>pwa-192x192.png</code></li>
+                        <li><code>pwa-512x512.png</code></li>
+                    </ul>
+                </li>
+                <li><strong>Run your app:</strong> <code>npm run dev</code></li>
+            </ol>
+        </div>
+
+        <div class="info">
+            <strong>💡 Pro Tip:</strong> These are simple placeholder icons. Later, you can replace them with your actual taverna logo!
+        </div>
+    </div>
+
+    <script>
+        // Draw the 192x192 icon
+        const canvas192 = document.getElementById('canvas192');
+        const ctx192 = canvas192.getContext('2d');
+        drawIcon(ctx192, 192);
+
+        // Draw the 512x512 icon
+        const canvas512 = document.getElementById('canvas512');
+        const ctx512 = canvas512.getContext('2d');
+        drawIcon(ctx512, 512);
+
+        function drawIcon(ctx, size) {
+            // Background - Orange gradient
+            const gradient = ctx.createLinearGradient(0, 0, size, size);
+            gradient.addColorStop(0, '#ff7043');
+            gradient.addColorStop(1, '#e35f0f');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, size, size);
+
+            // White circle in center
+            ctx.fillStyle = 'white';
+            ctx.beginPath();
+            ctx.arc(size / 2, size / 2, size * 0.35, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Fork and Knife icon (stylized)
+            ctx.fillStyle = '#e35f0f';
+            ctx.font = `bold ${size * 0.4}px Arial`;
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText('🍴', size / 2, size / 2);
+
+            // Text below
+            ctx.fillStyle = 'white';
+            ctx.font = `bold ${size * 0.1}px Arial`;
+            ctx.fillText('KOLIOS', size / 2, size * 0.85);
+        }
+
+        function downloadImage(canvasId, filename) {
+            const canvas = document.getElementById(canvasId);
+            const link = document.createElement('a');
+            link.download = filename;
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+            
+            // Show success message
+            alert(`✅ ${filename} downloaded!\n\nNow move it to the public/ folder in your project.`);
+        }
+    </script>
+</body>
+</html>

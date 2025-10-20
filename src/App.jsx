@@ -45,18 +45,13 @@ export default function App() {
     }
   }
 
-  return (
+    return (
     <BrowserRouter>
-      {/* ΔΙΟΡΘΩΜΕΝΟ NAV BAR: Home Link + Option Install Button */}
-      <nav style={{ padding: 10, display: 'flex', alignItems: 'center', gap: 12 }}>
+      {/* Navigation Bar: Install Button + Language Selector */}
+      <nav style={{ padding: 10, display: 'flex', alignItems: 'center', gap: 12, justifyContent: 'space-between' }}>
         
-        {/* Αριστερή Πλευρά: Home Link (ΠΑΝΤΑ ΟΡΑΤΟ) */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 12, flex: 1 }}>
-            
-            {/* 1. Σύνδεσμος Home (πάντα ορατός) */}
-            <Link to="/">Home</Link>
-            
-            {/* 2. Κουμπί Install (Ορατό μόνο αν το PWA είναι έτοιμο για προτροπή) */}
+        {/* Left Side: Install Button (visible only when PWA is ready) */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
             {isInstallVisible && deferredPrompt && (
                 <button
                     onClick={handleInstallClick}
@@ -68,15 +63,15 @@ export default function App() {
                         borderRadius: 6,
                         fontWeight: 600,
                         cursor: 'pointer',
-                        fontSize: '14px' // Μικρότερο για να χωράει στη Navbar
+                        fontSize: '14px'
                     }}
                 >
-                    Εγκατάσταση App
+                    {t('button.install_short')}
                 </button>
             )}
         </div>
         
-        {/* Δεξιά Πλευρά: Γλωσσική επιλογή */}
+        {/* Right Side: Language Selector */}
         <div>
           <label htmlFor="lang-select" style={{ marginRight: 8, fontWeight: 600 }}>Lang</label>
           <select

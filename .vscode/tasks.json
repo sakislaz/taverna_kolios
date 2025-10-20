@@ -1,20 +1,4 @@
 {
   "version": "2.0.0",
-  "tasks": [
-    {
-      "label": "Start Autosave Script",
-      "type": "shell",
-      "command": "${workspaceFolder}/scripts/autosave_git.sh",
-      "args": ["60"],
-      "presentation": {
-        "reveal": "silent",
-        "panel": "dedicated",
-        "showReuseMessage": false
-      },
-      "problemMatcher": [],
-      "runOptions": {
-        "runOn": "folderOpen"
-      }
-    }
-  ]
+  "tasks": []
 }

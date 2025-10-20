@@ -17,13 +17,68 @@ const resources = {
         'daily_events': 'Daily Events'
       },
       'button': {
-        'install': 'Install Taverna Kolios — Add to Home Screen'
+        'install': 'Install Taverna Kolios — Add to Home Screen',
+        'install_short': 'Install App'
       }
     }
   },
-  it: { translation: {} },
-  ro: { translation: {} },
-  de: { translation: {} }
+  it: {
+    translation: {
+      'header': {
+        'welcome': 'Benvenuti alla Taverna Kolios'
+      },
+      'link': {
+        'book_table': 'Prenota un Tavolo',
+        'order_beach': 'Ordina in Spiaggia',
+        'special_offers': 'Offerte Speciali',
+        'book_umbrella': 'Prenota un Ombrellone',
+        'book_massage': 'Prenota un Massaggio',
+        'daily_events': 'Eventi Giornalieri'
+      },
+      'button': {
+        'install': 'Installa Taverna Kolios — Aggiungi alla Schermata Home',
+        'install_short': 'Installa App'
+      }
+    }
+  },
+  ro: {
+    translation: {
+      'header': {
+        'welcome': 'Bine ați venit la Taverna Kolios'
+      },
+      'link': {
+        'book_table': 'Rezervă o Masă',
+        'order_beach': 'Comandă pe Plajă',
+        'special_offers': 'Oferte Speciale',
+        'book_umbrella': 'Rezervă o Umbrelă',
+        'book_massage': 'Rezervă un Masaj',
+        'daily_events': 'Evenimente Zilnice'
+      },
+      'button': {
+        'install': 'Instalează Taverna Kolios — Adaugă pe Ecranul Principal',
+        'install_short': 'Instalează App'
+      }
+    }
+  },
+  de: {
+    translation: {
+      'header': {
+        'welcome': 'Willkommen in der Taverna Kolios'
+      },
+      'link': {
+        'book_table': 'Tisch Reservieren',
+        'order_beach': 'Am Strand Bestellen',
+        'special_offers': 'Sonderangebote',
+        'book_umbrella': 'Sonnenschirm Buchen',
+        'book_massage': 'Massage Buchen',
+        'daily_events': 'Tägliche Veranstaltungen'
+      },
+      'button': {
+        'install': 'Taverna Kolios Installieren — Zum Startbildschirm Hinzufügen',
+        'install_short': 'App Installieren'
+      }
+    }
+  }
 }
 
 i18n
