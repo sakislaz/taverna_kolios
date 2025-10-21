@@ -1,25 +1,21 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import './Home.css' // Για να φορτώσει τα στυλ
+import './Home.css'
 
 export default function Home() {
   const { t } = useTranslation()
 
   return (
     <div className="hub-root">
-      <h1 className="hub-title">{t('header.welcome')} Taverna Kolios</h1>
+      <h1 className="hub-title">{t('header.welcome')} </h1>
 
       <div className="hub-grid">
-        <a
-          href="https://www.foodbooking.com/api/res/4_qgpn"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hub-box dark-blue"
-        >
+        {/* ✅ Replaced old GloriaFood link with internal Firebase form */}
+        <Link to="/booking" className="hub-box dark-blue">
           <span className="hub-emoji">📅</span>
           <span className="hub-text">{t('link.book_table')}</span>
-        </a>
+        </Link>
 
         <a
           href="https://www.foodbooking.com/api/fb/4_qgpn"
